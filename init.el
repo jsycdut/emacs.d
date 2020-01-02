@@ -149,21 +149,21 @@
 (use-package helm
   :config (helm-mode))
 
-(use-package company
-  :bind (:map company-active-map
-              ("M-n" . nil)
-              ("M-p" . nil)
-              ("C-n" . company-select-next)
-              ("C-p" . company-select-previous)))
+;; (use-package company
+;;   :bind (:map company-active-map
+;;               ("M-n" . nil)
+;;               ("M-p" . nil)
+;;               ("C-n" . company-select-next)
+;;               ("C-p" . company-select-previous)))
 
 ;; language server protocol(aka lsp) for development
 (use-package lsp-mode
   :hook((java-mode . lsp)
-	(lsp-mode . lsp-enable-which-key-integration))
+	  (lsp-mode . lsp-enable-which-key-integration))
   :config
-  (setq lsp-headerline-breadcrumb-segments '(symbols))
-  (setq tab-width 2)
-  (setq-default indent-tabs-mode nil)
+    (setq lsp-headerline-breadcrumb-segments '(symbols))
+    (setq tab-width 2)
+    (setq-default indent-tabs-mode nil)
   :commands lsp)
 
 (setq lsp-keymap-prefix "s-l")
@@ -176,28 +176,28 @@
 ;;    :commands lsp)
 
 ;; optional lsp integration with other fantastic basic enhencement
-(use-package lsp-ui
-  :commands lsp-ui-mode
-  :config
-    (setq lsp-ui-doc-show-with-mouse nil)
-    (setq lsp-ui-doc-show-with-cursor nil)
-    (setq lsp-ui-doc-position "top")
-    (setq lsp-ui-imenu-window-width 28)
-  :bind
-  ("M-s d" . lsp-ui-doc-show)
-  ("M-s D" . lsp-ui-doc-hide)
-  ("M-s f" . lsp-ui-doc-focus-frame)
-  ("M-s F" . lsp-ui-doc-unfocus-frame)
-  ("M-s m" . lsp-ui-imenu)
-  ("M-s M" . lsp-ui-imenu--kill))
+;;(use-package lsp-ui
+;;  :commands lsp-ui-mode
+;;  :config
+;;    (setq lsp-ui-doc-show-with-mouse nil)
+;;    (setq lsp-ui-doc-show-with-cursor nil)
+;;    (setq lsp-ui-doc-position "top")
+;;    (setq lsp-ui-imenu-window-width 28)
+;;  :bind
+;;  ("M-s d" . lsp-ui-doc-show)
+;;  ("M-s D" . lsp-ui-doc-hide)
+;;  ("M-s f" . lsp-ui-doc-focus-frame)
+;;  ("M-s F" . lsp-ui-doc-unfocus-frame)
+;;  ("M-s m" . lsp-ui-imenu)
+;;  ("M-s M" . lsp-ui-imenu--kill))
 
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 (use-package helm-lsp :commands helm-lsp-workspace-symbol)
-(use-package flycheck
-  :bind
-  ("M-s n" . flycheck-next-error)
-  ("M-s p" . flycheck-previous-error))
+;;(use-package flycheck
+;;  :bind
+;;  ("M-s n" . flycheck-next-error)
+;;  ("M-s p" . flycheck-previous-error))
 (use-package yasnippet
   :config (yas-global-mode))
 
@@ -214,4 +214,4 @@
 
 ;;;;;;;;;;;;;;;;;; key bindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
+ 
