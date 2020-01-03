@@ -50,7 +50,7 @@
 ;;;;;;;;;;;;;;;;;; Packages
 (use-package doom-themes
   :config
-  (load-theme 'doom-one-light t)
+  (load-theme 'doom-gruvbox t)
   (setq doom-themes-enable-bold t
 	doom-theme-enable-italic t)
   (doom-themes-visual-bell-config)
@@ -80,7 +80,7 @@
   :diminish
   :bind (("C-s" . swiper)
 	 ("C-r" . swiper)
-         ("C-M-j" . 'counsel-switch-buffer)
+         ("M-s b" . 'counsel-switch-buffer)
          :map ivy-minibuffer-map
          ("TAB" . ivy-alt-done)
          ("C-l" . ivy-alt-done)
@@ -141,18 +141,31 @@
 ;; great enhencements for nicer handle
 ;; window movement, better than default C-x o
 (use-package ace-window
-  :config(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-  :bind("M-o" . ace-window))
+  :config
+    (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+    (setq aw-dispatch-always t)
+    :bind("C-x o" . ace-window))
 
 (use-package helm
   :config (helm-mode))
-;;(use-package company)
+
+(use-package company
+  :bind (:map company-active-map
+              ("M-n" . nil)
+              ("M-p" . nil)
+              ("C-n" . company-select-next)
+              ("C-p" . company-select-previous)))
 
 ;; language server protocol(aka lsp) for development
 (use-package lsp-mode
   :hook((java-mode . lsp)
 	(lsp-mode . lsp-enable-which-key-integration))
+  :config
+  (setq lsp-headerline-breadcrumb-segments '(symbols))
+  (setq tab-width 2)
+  (setq-default indent-tabs-mode nil)
   :commands lsp)
+
 (setq lsp-keymap-prefix "s-l")
 
 ;;(use-package lsp-mode
@@ -163,26 +176,42 @@
 ;;    :commands lsp)
 
 ;; optional lsp integration with other fantastic basic enhencement
-(use-package lsp-ui :commands lsp-ui-mode)
+(use-package lsp-ui
+  :commands lsp-ui-mode
+  :config
+    (setq lsp-ui-doc-show-with-mouse nil)
+    (setq lsp-ui-doc-show-with-cursor nil)
+    (setq lsp-ui-doc-position "top")
+    (setq lsp-ui-imenu-window-width 28)
+  :bind
+  ("M-s d" . lsp-ui-doc-show)
+  ("M-s D" . lsp-ui-doc-hide)
+  ("M-s f" . lsp-ui-doc-focus-frame)
+  ("M-s F" . lsp-ui-doc-unfocus-frame)
+  ("M-s m" . lsp-ui-imenu)
+  ("M-s M" . lsp-ui-imenu--kill))
+
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 (use-package helm-lsp :commands helm-lsp-workspace-symbol)
-(use-package flycheck)
-;;(use-package yasnippet :config (yas-global-mode))
-;;(use-package lsp-mode :hook ((lsp-mode . lsp-enable-which-key-integration))
-;;  :config (setq lsp-completion-enable-additional-text-edit nil))
-
-;;(use-package dap-mode :after lsp-mode :config (dap-auto-configure-mode))
-
-
-
+(use-package flycheck
+  :bind
+  ("M-s n" . flycheck-next-error)
+  ("M-s p" . flycheck-previous-error))
+(use-package yasnippet
+  :config (yas-global-mode))
 
 ;; Java
-;; hard coded locations
-(setq lsp-java-server-install-dir "/home/corona/github/emacs.d/lsp-servers/jdt/")
-(setq lsp-java-jdt-download-url  "https://download.eclipse.org/jdtls/milestones/0.57.0/jdt-language-server-0.57.0-202006172108.tar.gz")
-(use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
+(use-package lsp-java
+	:config
+	(setq lsp-java-server-install-dir "/home/corona/github/emacs.d/lsp-servers/jdt/")
+	(setq lsp-java-jdt-download-url  "https://download.eclipse.org/jdtls/milestones/0.57.0/jdt-language-server-0.57.0-202006172108.tar.gz")
+	(setq lsp-java-format-settings-url "/home/corona/github/emacs.d/lsp-servers/format-settings/eclipse-java-google-style.xml")
+	(setq lsp-java-format-settings-profile "GoogleStyle")
+	(add-hook 'java-mode-hook 'lsp))
+
 (use-package dap-java :ensure nil)
 
 ;;;;;;;;;;;;;;;;;; key bindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
