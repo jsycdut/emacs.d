@@ -176,20 +176,20 @@
 ;;    :commands lsp)
 
 ;; optional lsp integration with other fantastic basic enhencement
-;;(use-package lsp-ui
-;;  :commands lsp-ui-mode
-;;  :config
-;;    (setq lsp-ui-doc-show-with-mouse nil)
-;;    (setq lsp-ui-doc-show-with-cursor nil)
-;;    (setq lsp-ui-doc-position "top")
-;;    (setq lsp-ui-imenu-window-width 28)
-;;  :bind
-;;  ("M-s d" . lsp-ui-doc-show)
-;;  ("M-s D" . lsp-ui-doc-hide)
-;;  ("M-s f" . lsp-ui-doc-focus-frame)
-;;  ("M-s F" . lsp-ui-doc-unfocus-frame)
-;;  ("M-s m" . lsp-ui-imenu)
-;;  ("M-s M" . lsp-ui-imenu--kill))
+(use-package lsp-ui
+  :commands lsp-ui-mode
+  :config
+    (setq lsp-ui-doc-show-with-mouse nil)
+    (setq lsp-ui-doc-show-with-cursor nil)
+    (setq lsp-ui-doc-position "top")
+    (setq lsp-ui-imenu-window-width 28)
+  :bind
+  ("M-s d" . lsp-ui-doc-show)
+  ("M-s D" . lsp-ui-doc-hide)
+  ("M-s f" . lsp-ui-doc-focus-frame)
+  ("M-s F" . lsp-ui-doc-unfocus-frame)
+  ("M-s m" . lsp-ui-imenu)
+  ("M-s M" . lsp-ui-imenu--kill))
 
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
