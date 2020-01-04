@@ -194,10 +194,11 @@
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 (use-package helm-lsp :commands helm-lsp-workspace-symbol)
-;;(use-package flycheck
-;;  :bind
-;;  ("M-s n" . flycheck-next-error)
-;;  ("M-s p" . flycheck-previous-error))
+
+(use-package flycheck
+  :bind
+  ("M-s n" . flycheck-next-error)
+  ("M-s p" . flycheck-previous-error))
 (use-package yasnippet
   :config (yas-global-mode))
 
