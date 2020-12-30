@@ -4,4 +4,4 @@
 (setq inhibit-startup-message t)
 (setq make-backup-files nil)
 (global-display-line-numbers-mode t)
-
+(setq browse-url-browser-function 'browse-url-chromium)
