@@ -16,11 +16,12 @@
 
 (column-number-mode)
 (global-display-line-numbers-mode t)
-(set-face-attribute 'default nil :height 130)
+(set-face-attribute 'default nil :height 160)
 (setq visible-bell t)
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;;;;;;;;;;;;;;;;;; misc
-(setq browse-url-browser-function 'browse-url-chromium)
+(setq browse-url-browser-function 'browse-url-chrome)
 
 ;;;;;;;;;;;;;;;;;; Package System
 
@@ -49,7 +50,7 @@
 ;;;;;;;;;;;;;;;;;; Packages
 (use-package doom-themes
   :config
-  (load-theme 'doom-solarized-dark t)
+  (load-theme 'doom-gruvbox t)
   (setq doom-themes-enable-bold t
 	doom-theme-enable-italic t)
   (doom-themes-visual-bell-config)
