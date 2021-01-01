@@ -16,12 +16,12 @@
 
 (column-number-mode)
 (global-display-line-numbers-mode t)
-(set-face-attribute 'default nil :height 160)
+(set-face-attribute 'default nil :height 140)
 (setq visible-bell t)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;;;;;;;;;;;;;;;;;; misc
-(setq browse-url-browser-function 'browse-url-chrome)
+(setq browse-url-browser-function 'browse-url-chromium)
 
 ;;;;;;;;;;;;;;;;;; Package System
 
@@ -50,7 +50,7 @@
 ;;;;;;;;;;;;;;;;;; Packages
 (use-package doom-themes
   :config
-  (load-theme 'doom-gruvbox t)
+  (load-theme 'doom-one-light t)
   (setq doom-themes-enable-bold t
 	doom-theme-enable-italic t)
   (doom-themes-visual-bell-config)
@@ -132,6 +132,45 @@
   (setq org-pretty-entities t))
   
 ;; language server protocol(aka lsp) for development
+;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+
+(setq lsp-java-server-install-dir "/home/corona/github/emacs.d/lsp-servers/jdt/")
+(setq lsp-java-jdt-download-url  "https://download.eclipse.org/jdtls/milestones/0.57.0/jdt-language-server-0.57.0-202006172108.tar.gz")
+(setq lsp-keymap-prefix "s-l")
+
+(use-package lsp-mode
+    :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+            (java-mode . lsp)
+            ;; if you want which-key integration
+            (lsp-mode . lsp-enable-which-key-integration))
+    :commands lsp)
+
+;; optionally
+;;(use-package lsp-ui :commands lsp-ui-mode)
+;; if you are helm user
+;;(use-package helm-lsp :commands helm-lsp-workspace-symbol)
+;; if you are ivy user
+(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+
+;; optionally if you want to use debugger
+(use-package dap-mode)
+
+;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+(use-package projectile)
+;;(use-package flycheck)
+;;(use-package yasnippet :config (yas-global-mode))
+;;(use-package lsp-mode :hook ((lsp-mode . lsp-enable-which-key-integration))
+;;  :config (setq lsp-completion-enable-additional-text-edit nil))
+;;(use-package company)
+;;(use-package lsp-ui)
+(use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
+;;(use-package dap-mode :after lsp-mode :config (dap-auto-configure-mode))
+;;(use-package dap-java :ensure nil)
+;;(use-package helm-lsp)
+;;(use-package helm
+;;  :config (helm-mode))
+;;(use-package lsp-treemacs)
 
 
 ;;;;;;;;;;;;;;;;;; key bindings
