@@ -75,7 +75,6 @@
   :diminish which-key-mode
   :config (setq which-key-idle-delay 0.05))
 
-
 ;; enhencement for emacs original functions and command completion
 (use-package swiper
   :diminish
@@ -116,7 +115,15 @@
 ;;   ([remap describe-command] . helpful-command)
 ;;   ([remap describe-variable] . counsel-describe-variable)
 ;;   ([remap describe-key] . helpful-key))
-;; 
+;;
+
+(use-package projectile
+  :ensure t
+  :init
+  (projectile-mode +1)
+  :bind (:map projectile-mode-map
+              ("s-p" . projectile-command-map)
+              ("C-c p" . projectile-command-map)))
 
 (use-package evil
   :init
@@ -130,48 +137,52 @@
   (setq org-superstar-headline-bullets-list '("☰" "☷" "☯" "☭"))
   (setq org-indent-mode 1)
   (setq org-pretty-entities t))
-  
-;; language server protocol(aka lsp) for development
-;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
 
-(setq lsp-java-server-install-dir "/home/corona/github/emacs.d/lsp-servers/jdt/")
-(setq lsp-java-jdt-download-url  "https://download.eclipse.org/jdtls/milestones/0.57.0/jdt-language-server-0.57.0-202006172108.tar.gz")
+;; great enhencements for nicer handle
+;; window movement, better than default C-x o
+(use-package ace-window
+  :config(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  :bind("M-o" . ace-window))
+
+(use-package helm
+  :config (helm-mode))
+;;(use-package company)
+
+;; language server protocol(aka lsp) for development
+(use-package lsp-mode
+  :hook((java-mode . lsp)
+	(lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
 (setq lsp-keymap-prefix "s-l")
 
-(use-package lsp-mode
-    :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-            (java-mode . lsp)
-            ;; if you want which-key integration
-            (lsp-mode . lsp-enable-which-key-integration))
-    :commands lsp)
+;;(use-package lsp-mode
+;;    :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+;;           (java-mode . lsp)
+;;           ;; if you want which-key integration
+;;           (lsp-mode . lsp-enable-which-key-integration))
+;;    :commands lsp)
 
-;; optionally
-;;(use-package lsp-ui :commands lsp-ui-mode)
-;; if you are helm user
-;;(use-package helm-lsp :commands helm-lsp-workspace-symbol)
-;; if you are ivy user
+;; optional lsp integration with other fantastic basic enhencement
+(use-package lsp-ui :commands lsp-ui-mode)
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
-
-;; optionally if you want to use debugger
-(use-package dap-mode)
-
-;; (use-package dap-LANGUAGE) to load the dap adapter for your language
-(use-package projectile)
-;;(use-package flycheck)
+(use-package helm-lsp :commands helm-lsp-workspace-symbol)
+(use-package flycheck)
 ;;(use-package yasnippet :config (yas-global-mode))
 ;;(use-package lsp-mode :hook ((lsp-mode . lsp-enable-which-key-integration))
 ;;  :config (setq lsp-completion-enable-additional-text-edit nil))
-;;(use-package company)
-;;(use-package lsp-ui)
-(use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
-;;(use-package dap-mode :after lsp-mode :config (dap-auto-configure-mode))
-;;(use-package dap-java :ensure nil)
-;;(use-package helm-lsp)
-;;(use-package helm
-;;  :config (helm-mode))
-;;(use-package lsp-treemacs)
 
+;;(use-package dap-mode :after lsp-mode :config (dap-auto-configure-mode))
+
+
+
+
+;; Java
+;; hard coded locations
+(setq lsp-java-server-install-dir "/home/corona/github/emacs.d/lsp-servers/jdt/")
+(setq lsp-java-jdt-download-url  "https://download.eclipse.org/jdtls/milestones/0.57.0/jdt-language-server-0.57.0-202006172108.tar.gz")
+(use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
+(use-package dap-java :ensure nil)
 
 ;;;;;;;;;;;;;;;;;; key bindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
