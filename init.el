@@ -149,12 +149,12 @@
 (use-package helm
   :config (helm-mode))
 
-;; (use-package company
-;;   :bind (:map company-active-map
-;;               ("M-n" . nil)
-;;               ("M-p" . nil)
-;;               ("C-n" . company-select-next)
-;;               ("C-p" . company-select-previous)))
+(use-package company
+  :bind (:map company-active-map
+              ("M-n" . nil)
+              ("M-p" . nil)
+              ("C-n" . company-select-next)
+              ("C-p" . company-select-previous)))
 
 ;; language server protocol(aka lsp) for development
 (use-package lsp-mode
