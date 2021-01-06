@@ -16,7 +16,7 @@
 
 (column-number-mode)
 (global-display-line-numbers-mode t)
-(set-face-attribute 'default nil :height 140)
+(set-face-attribute 'default nil :height 120)
 (setq visible-bell t)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
@@ -48,9 +48,10 @@
 (setq use-package-always-ensure t)
 
 ;;;;;;;;;;;;;;;;;; Packages
+(use-package magit)
 (use-package doom-themes
   :config
-  (load-theme 'doom-gruvbox t)
+  (load-theme 'doom-one-light t)
   (setq doom-themes-enable-bold t
 	doom-theme-enable-italic t)
   (doom-themes-visual-bell-config)
@@ -168,13 +169,6 @@
 
 (setq lsp-keymap-prefix "s-l")
 
-;;(use-package lsp-mode
-;;    :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-;;           (java-mode . lsp)
-;;           ;; if you want which-key integration
-;;           (lsp-mode . lsp-enable-which-key-integration))
-;;    :commands lsp)
-
 ;; optional lsp integration with other fantastic basic enhencement
 (use-package lsp-ui
   :commands lsp-ui-mode
@@ -192,7 +186,10 @@
   ("M-s M" . lsp-ui-imenu--kill))
 
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+(use-package lsp-treemacs
+  :commands lsp-treemacs-errors-list
+  :config
+  (lsp-treemacs-sync-mode 1))
 (use-package helm-lsp :commands helm-lsp-workspace-symbol)
 
 (use-package flycheck
@@ -215,4 +212,21 @@
 
 ;;;;;;;;;;;;;;;;;; key bindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
- 
+
+;;;;;;;;;;;;;;;;;; chinese input method
+(use-package pyim
+  :ensure nil
+  :demand t
+  :config
+  (use-package pyim-basedict
+    :ensure nil
+    :config (pyim-basedict-enable))
+  (use-package posframe)
+  (setq pyim-page-tooltip 'posframe)
+  (setq default-input-method "pyim")
+  (setq pyim-default-scheme 'quanpin)
+  (pyim-isearch-mode 1)
+  (setq pyim-page-length 5)
+  :bind
+  (("C-\\" . toggle-input-method)
+   ("C-;" . pyim-delete-word-from-personal-buffer)))
