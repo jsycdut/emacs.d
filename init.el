@@ -26,13 +26,13 @@
 ;;;;;;;;;;;;;;;;;; Package System
 
 (require 'package)
-;;(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-;;                         ("org" . "https://orgmode.org/elpa/")
-;;                         ("elpa" . "https://elpa.gnu.org/packages/")))
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("org" . "https://orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
 
 ;; mirror for Chinese user
-(setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-                         ("melpa" . "http://elpa.emacs-china.org/melpa/")))
+;;(setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
+;;                         ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 (package-initialize)
 
 (unless package-archive-contents
@@ -77,6 +77,8 @@
   :config (setq which-key-idle-delay 0.05))
 
 ;; enhencement for emacs original functions and command completion
+(use-package counsel)
+(use-package ivy)
 (use-package swiper
   :diminish
   :bind (("C-s" . swiper)
@@ -101,7 +103,6 @@
   :config
   (counsel-mode 1)
   (ivy-mode 1))
-
 
 (use-package ivy-rich
   :init
@@ -202,7 +203,7 @@
 ;; Java
 (use-package lsp-java
 	:config
-	(setq lsp-java-server-install-dir "/home/corona/github/emacs.d/lsp-servers/jdt/")
+	(setq lsp-java-server-install-dir "~/emacs.d/lsp-servers/jdt/")
 	(setq lsp-java-jdt-download-url  "https://download.eclipse.org/jdtls/milestones/0.57.0/jdt-language-server-0.57.0-202006172108.tar.gz")
 	(setq lsp-java-format-settings-url "/home/corona/github/emacs.d/lsp-servers/format-settings/eclipse-java-google-style.xml")
 	(setq lsp-java-format-settings-profile "GoogleStyle")
@@ -237,3 +238,21 @@
     (setq leetcode-prefer-language "java")
     (setq leetcode-save-solutions t)
     (setq leetcode-directory "~/leetcode"))
+
+;;;;;;;;;;;;;;;;;; slides
+;;(use-package ox-ioslide)
+(require 'ox-ioslide)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(helm-completion-style 'emacs)
+ '(package-selected-packages
+   '(ox-ioslide yasnippet which-key use-package rainbow-delimiters pyim projectile org-superstar magit lsp-ui lsp-java lsp-ivy leetcode ivy-rich helm-lsp flycheck evil doom-themes doom-modeline counsel-org-capture-string counsel company command-log-mode)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
