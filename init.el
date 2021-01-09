@@ -51,7 +51,7 @@
 (use-package magit)
 (use-package doom-themes
   :config
-  (load-theme 'doom-one-light t)
+  (load-theme 'doom-gruvbox t)
   (setq doom-themes-enable-bold t
 	doom-theme-enable-italic t)
   (doom-themes-visual-bell-config)
@@ -161,6 +161,7 @@
 ;; language server protocol(aka lsp) for development
 (use-package lsp-mode
   :hook((java-mode . lsp)
+        (go-mode .lsp)
 	  (lsp-mode . lsp-enable-which-key-integration))
   :config
     (setq lsp-headerline-breadcrumb-segments '(symbols))
@@ -203,7 +204,7 @@
 ;; Java
 (use-package lsp-java
 	:config
-	(setq lsp-java-server-install-dir "~/emacs.d/lsp-servers/jdt/")
+	(setq lsp-java-server-install-dir "~/.emacs.d/lsp-servers/jdt/")
 	(setq lsp-java-jdt-download-url  "https://download.eclipse.org/jdtls/milestones/0.57.0/jdt-language-server-0.57.0-202006172108.tar.gz")
 	(setq lsp-java-format-settings-url "/home/corona/github/emacs.d/lsp-servers/format-settings/eclipse-java-google-style.xml")
 	(setq lsp-java-format-settings-profile "GoogleStyle")
@@ -239,17 +240,34 @@
     (setq leetcode-save-solutions t)
     (setq leetcode-directory "~/leetcode"))
 
+
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook)
+  (setq dashboard-banner-logo-title "make it happen, you can if you do it")
+  (setq dashboard-startup-banner 'logo)
+  (setq dashboard-center-content t)
+  (setq dashboard-items '((recents  . 5)
+                        (projects . 5)))
+  (setq dashboard-footer-messages nil)
+  (setq dashboard-footer-icon nil)
+  (setq dashboard-show-shortcuts nil))
+
 ;;;;;;;;;;;;;;;;;; slides
 ;;(use-package ox-ioslide)
 (require 'ox-ioslide)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("d6603a129c32b716b3d3541fc0b6bfe83d0e07f1954ee64517aa62c9405a3441" default))
  '(helm-completion-style 'emacs)
  '(package-selected-packages
-   '(ox-ioslide yasnippet which-key use-package rainbow-delimiters pyim projectile org-superstar magit lsp-ui lsp-java lsp-ivy leetcode ivy-rich helm-lsp flycheck evil doom-themes doom-modeline counsel-org-capture-string counsel company command-log-mode)))
+   '(dashboard ox-ioslide yasnippet which-key use-package rainbow-delimiters pyim projectile org-superstar magit lsp-ui lsp-java lsp-ivy leetcode ivy-rich helm-lsp flycheck evil doom-themes doom-modeline counsel-org-capture-string counsel company command-log-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
