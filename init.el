@@ -245,8 +245,11 @@
   :ensure t
   :config
   (dashboard-setup-startup-hook)
-  (setq dashboard-banner-logo-title "make it happen, you can if you do it")
+  (setq dashboard-banner-logo-title "you need to control yourself")
   (setq dashboard-startup-banner 'logo)
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-set-navigator t)
   (setq dashboard-center-content t)
   (setq dashboard-items '((recents  . 5)
                         (projects . 5)))
