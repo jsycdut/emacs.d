@@ -233,14 +233,6 @@
   (("C-\\" . toggle-input-method)
    ("C-;" . pyim-delete-word-from-personal-buffer)))
 
-;;;;;;;;;;;;;;;;;; oh~ leetcode
-(use-package leetcode
-  :config
-    (setq leetcode-prefer-language "java")
-    (setq leetcode-save-solutions t)
-    (setq leetcode-directory "~/leetcode"))
-
-
 (use-package dashboard
   :ensure t
   :config
