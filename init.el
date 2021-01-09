@@ -250,7 +250,7 @@
   (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
   (setq dashboard-set-navigator t)
-  (setq dashboard-center-content t)
+  (setq dashboard-center-content nil)
   (setq dashboard-items '((recents  . 5)
                         (projects . 5)))
   (setq dashboard-footer-messages nil)
