@@ -1,4 +1,4 @@
-;; I used to be a vim user, but now I am using emacs :)
+;; I used to be a vim user, but now I'm using emacs :)
 ;;
 ;;   ___ | |__         ___ _ __ ___   __ _  ___ ___ 
 ;;  / _ \| '_ \ _____ / _ \ '_ ` _ \ / _` |/ __/ __|
@@ -19,7 +19,8 @@
 (set-face-attribute 'default nil :height 120)
 (setq visible-bell t)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-
+(set-frame-parameter (selected-frame) 'alpha '(80 . 50))
+(add-to-list 'default-frame-alist '(alpha . (80 . 50)))
 ;;;;;;;;;;;;;;;;;; misc
 (setq browse-url-browser-function 'browse-url-chromium)
 
@@ -161,8 +162,9 @@
 ;; language server protocol(aka lsp) for development
 (use-package lsp-mode
   :hook((java-mode . lsp)
-        (go-mode .lsp)
-	  (lsp-mode . lsp-enable-which-key-integration))
+        (c-mod . lsp)
+        (cc-mode . lsp)
+        (lsp-mode . lsp-enable-which-key-integration))
   :config
     (setq lsp-headerline-breadcrumb-segments '(symbols))
     (setq tab-width 2)
@@ -259,7 +261,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("d6603a129c32b716b3d3541fc0b6bfe83d0e07f1954ee64517aa62c9405a3441" default))
+   '("aaa4c36ce00e572784d424554dcc9641c82d1155370770e231e10c649b59a074" "99ea831ca79a916f1bd789de366b639d09811501e8c092c85b2cb7d697777f93" "2f1518e906a8b60fac943d02ad415f1d8b3933a5a7f75e307e6e9a26ef5bf570" "d6603a129c32b716b3d3541fc0b6bfe83d0e07f1954ee64517aa62c9405a3441" default))
  '(helm-completion-style 'emacs)
  '(package-selected-packages
    '(dashboard ox-ioslide yasnippet which-key use-package rainbow-delimiters pyim projectile org-superstar magit lsp-ui lsp-java lsp-ivy leetcode ivy-rich helm-lsp flycheck evil doom-themes doom-modeline counsel-org-capture-string counsel company command-log-mode)))
