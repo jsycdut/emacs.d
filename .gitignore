@@ -251,3 +251,15 @@ gradle-app.setting
 **/build/
 
 # End of https://www.toptal.com/developers/gitignore/api/emacs,osx,linux,eclipse,c++,go,maven,gradle
+
+# start of my own config
+.cache/
+lsp-servers/
+pyim/
+recentf
+transient/
+url/
+workspace/
+projectile-bookmarks.eld
+.lsp-session-v1
+# end of my own config
