@@ -164,6 +164,7 @@
   :hook((java-mode . lsp)
         (c-mod . lsp)
         (cc-mode . lsp)
+        (sh-mode . lsp)
         (lsp-mode . lsp-enable-which-key-integration))
   :config
     (setq lsp-headerline-breadcrumb-segments '(symbols))
@@ -213,7 +214,13 @@
 	(add-hook 'java-mode-hook 'lsp))
 
 (use-package dap-java :ensure nil)
-
+;; Python
+(use-package lsp-python-ms
+  :ensure t
+  :init (setq lsp-python-ms-auto-install-server t)
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-python-ms)
+                          (lsp))))  ; or lsp-deferred
 ;;;;;;;;;;;;;;;;;; key bindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
@@ -264,7 +271,7 @@
    '("aaa4c36ce00e572784d424554dcc9641c82d1155370770e231e10c649b59a074" "99ea831ca79a916f1bd789de366b639d09811501e8c092c85b2cb7d697777f93" "2f1518e906a8b60fac943d02ad415f1d8b3933a5a7f75e307e6e9a26ef5bf570" "d6603a129c32b716b3d3541fc0b6bfe83d0e07f1954ee64517aa62c9405a3441" default))
  '(helm-completion-style 'emacs)
  '(package-selected-packages
-   '(dashboard ox-ioslide yasnippet which-key use-package rainbow-delimiters pyim projectile org-superstar magit lsp-ui lsp-java lsp-ivy leetcode ivy-rich helm-lsp flycheck evil doom-themes doom-modeline counsel-org-capture-string counsel company command-log-mode)))
+   '(lsp-python-ms dashboard ox-ioslide yasnippet which-key use-package rainbow-delimiters pyim projectile org-superstar magit lsp-ui lsp-java lsp-ivy leetcode ivy-rich helm-lsp flycheck evil doom-themes doom-modeline counsel-org-capture-string counsel company command-log-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
