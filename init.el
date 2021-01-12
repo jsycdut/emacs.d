@@ -66,6 +66,9 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
+(use-package nyan-mode
+  :init (nyan-mode 1))
+
 (use-package command-log-mode
   :ensure t
   :init (command-log-mode 1))
@@ -137,7 +140,8 @@
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode)
   :config
-  (setq org-superstar-headline-bullets-list '("☰" "☷" "☯" "☭"))
+;;  (setq org-superstar-headline-bullets-list '("🖋️" "🌿" "☯" "☭"))
+  (setq org-indent-indentation-per-level 0)
   (setq org-indent-mode 1)
   (setq org-pretty-entities t))
 
@@ -261,20 +265,3 @@
 ;;;;;;;;;;;;;;;;;; slides
 ;;(use-package ox-ioslide)
 (require 'ox-ioslide)
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("aaa4c36ce00e572784d424554dcc9641c82d1155370770e231e10c649b59a074" "99ea831ca79a916f1bd789de366b639d09811501e8c092c85b2cb7d697777f93" "2f1518e906a8b60fac943d02ad415f1d8b3933a5a7f75e307e6e9a26ef5bf570" "d6603a129c32b716b3d3541fc0b6bfe83d0e07f1954ee64517aa62c9405a3441" default))
- '(helm-completion-style 'emacs)
- '(package-selected-packages
-   '(lsp-python-ms dashboard ox-ioslide yasnippet which-key use-package rainbow-delimiters pyim projectile org-superstar magit lsp-ui lsp-java lsp-ivy leetcode ivy-rich helm-lsp flycheck evil doom-themes doom-modeline counsel-org-capture-string counsel company command-log-mode)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
