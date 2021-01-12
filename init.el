@@ -265,3 +265,14 @@
 ;;;;;;;;;;;;;;;;;; slides
 ;;(use-package ox-ioslide)
 (require 'ox-ioslide)
+
+(use-package org-pomodoro
+  :config
+  (setq org-pomodoro-audio-player "mpv")
+  (setq org-pomodoro-length 25)
+  (setq org-pomodoro-short-break-length 5)
+  (setq org-pomodoro-long-break-length 20)
+  (setq org-pomodoro-finished-sound-args "-volume 35")
+  (setq org-pomodoro-long-break-sound-args "-volume 35")
+  (setq org-pomodoro-short-break-sound-args "-volume 35")
+  (setq org-pomodoro-ticking-sound-args "-volume 35"))
