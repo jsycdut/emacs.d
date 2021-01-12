@@ -136,11 +136,60 @@
   :config
   (evil-mode 0))
 
-(use-package org)
+(use-package org
+  :config
+  (setq org-agenda-files '("~/github/org/"))
+  (setq org-todo-keywords
+    '((sequence "BUG(b!)" "|" "FIXED(f!)")
+      (sequence "TODO(t!)" "SOMEDAY(s)" "|" "DONE(d!)" "CANCELED(c @/!)")
+      ))
+  (setq org-agenda-custom-commands
+    '(("w" . "任务安排")
+      ("wa" "重要且紧急的任务" tags-todo "+PRIORITY=\"A\"")
+      ("wb" "重要且不紧急的任务" tags-todo "-weekly-monthly-daily+PRIORITY=\"B\"")
+      ("wc" "不重要且紧急的任务" tags-todo "+PRIORITY=\"C\"")
+      ("W" "Weekly Review"
+       ((stuck "") ;; review stuck projects as designated by org-stuck-projects
+        (tags-todo "project")
+        (tags-todo "daily")
+        (tags-todo "weekly")
+        (tags-todo "school")
+        (tags-todo "code")
+        (tags-todo "theory")
+        ))))
+  (defvar org-agenda-dir "" "gtd org files location")
+  (setq-default org-agenda-dir "~/github/org/")
+  (setq org-agenda-file-note (expand-file-name "notes.org" org-agenda-dir))
+  (setq org-agenda-file-task (expand-file-name "task.org" org-agenda-dir))
+  (setq org-agenda-file-calendar (expand-file-name "calendar.org" org-agenda-dir))
+  (setq org-agenda-file-finished (expand-file-name "finished.org" org-agenda-dir))
+  (setq org-agenda-file-canceled (expand-file-name "canceled.org" org-agenda-dir))
+  (setq org-capture-templates
+    '(
+      ("t" "Todo" entry (file+headline org-agenda-file-task "Work")
+       "* TODO [#B] %?\n  %i\n"
+       :empty-lines 1)
+      ("l" "Tolearn" entry (file+headline org-agenda-file-task "Learning")
+       "* TODO [#B] %?\n  %i\n"
+      :empty-lines 1)
+      ("h" "Toplay" entry (file+headline org-agenda-file-task "Hobbies")
+       "* TODO [#C] %?\n  %i\n"
+       :empty-lines 1)
+      ("o" "Todo_others" entry (file+headline org-agenda-file-task "Others")
+       "* TODO [#C] %?\n  %i\n"
+       :empty-lines 1)
+      ("n" "notes" entry (file+headline org-agenda-file-note "Quick notes")
+       "* %?\n  %i\n %U"
+       :empty-lines 1)
+      ("i" "ideas" entry (file+headline org-agenda-file-note "Quick ideas")
+       "* %?\n  %i\n %U"
+       :empty-lines 1)
+      )))
+
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode)
   :config
-;;  (setq org-superstar-headline-bullets-list '("🖋️" "🌿" "☯" "☭"))
+;;  (setq org-superstar-headline-bullets-list '("level1" "level2" "level3" "level4"))
   (setq org-indent-indentation-per-level 0)
   (setq org-indent-mode 1)
   (setq org-pretty-entities t))
@@ -266,13 +315,16 @@
 ;;(use-package ox-ioslide)
 (require 'ox-ioslide)
 
+;;;;;;;;;;;;;;;;;; pomodoro technique
 (use-package org-pomodoro
   :config
   (setq org-pomodoro-audio-player "mpv")
   (setq org-pomodoro-length 25)
   (setq org-pomodoro-short-break-length 5)
   (setq org-pomodoro-long-break-length 20)
-  (setq org-pomodoro-finished-sound-args "-volume 35")
-  (setq org-pomodoro-long-break-sound-args "-volume 35")
-  (setq org-pomodoro-short-break-sound-args "-volume 35")
-  (setq org-pomodoro-ticking-sound-args "-volume 35"))
+  (setq org-pomodoro-finished-sound-args "-volume 45")
+  (setq org-pomodoro-long-break-sound-args "-volume 45")
+  (setq org-pomodoro-short-break-sound-args "-volume 45")
+  (setq org-pomodoro-ticking-sound-args "-volume 45"))
+
+
