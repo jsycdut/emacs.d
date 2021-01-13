@@ -148,6 +148,8 @@
   (evil-mode 0))
 
 (use-package org
+  :bind(("C-c a" . org-agenda)
+	("C-c c" . org-capture))
   :config
   (setq org-agenda-files '("~/github/org/"))
   (setq org-todo-keywords
@@ -180,19 +182,19 @@
       ("t" "Todo" entry (file+headline org-agenda-file-task "Work")
        "* TODO [#B] %?\n  %i\n"
        :empty-lines 1)
-      ("l" "Tolearn" entry (file+headline org-agenda-file-task "Learning")
+      ("l" "To Learn" entry (file+headline org-agenda-file-task "Learning")
        "* TODO [#B] %?\n  %i\n"
       :empty-lines 1)
-      ("h" "Toplay" entry (file+headline org-agenda-file-task "Hobbies")
+      ("h" "To Play" entry (file+headline org-agenda-file-task "Hobbies")
        "* TODO [#C] %?\n  %i\n"
        :empty-lines 1)
-      ("o" "Todo_others" entry (file+headline org-agenda-file-task "Others")
+      ("o" "Todo Others" entry (file+headline org-agenda-file-task "Others")
        "* TODO [#C] %?\n  %i\n"
        :empty-lines 1)
-      ("n" "notes" entry (file+headline org-agenda-file-note "Quick notes")
+      ("n" "Notes" entry (file+headline org-agenda-file-note "Quick notes")
        "* %?\n  %i\n %U"
        :empty-lines 1)
-      ("i" "ideas" entry (file+headline org-agenda-file-note "Quick ideas")
+      ("i" "Ideas" entry (file+headline org-agenda-file-note "Quick ideas")
        "* %?\n  %i\n %U"
        :empty-lines 1)
       )))
@@ -310,7 +312,7 @@
   :defer nil
   :config
   (dashboard-setup-startup-hook)
-  (setq dashboard-banner-logo-title "you need to control yourself")
+  (setq dashboard-banner-logo-title "Control your time, control your life")
   (setq dashboard-startup-banner "~/github/emacs.d/pictures/ue-pink.png")
   (setq dashboard-image-banner-max-width 400)
   (setq dashboard-set-heading-icons t)
