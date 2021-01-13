@@ -72,6 +72,7 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
+;; nyan cat, need mplayer installed
 (use-package nyan-mode
   :init
   (nyan-mode 1)
@@ -199,7 +200,7 @@
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode)
   :config
-;;  (setq org-superstar-headline-bullets-list '("level1" "level2" "level3" "level4"))
+  (setq org-superstar-headline-bullets-list '("◉" "○" "●"))
   (setq org-indent-indentation-per-level 0)
   (setq org-indent-mode 1)
   (setq org-pretty-entities t))
@@ -291,15 +292,16 @@
 (use-package pyim
   :demand t
   :config
+  (use-package posframe)
   (use-package pyim-basedict
     :ensure nil
     :config (pyim-basedict-enable))
-  (use-package posframe)
   (setq pyim-page-tooltip 'posframe)
   (setq default-input-method "pyim")
   (setq pyim-default-scheme 'quanpin)
-  (pyim-isearch-mode 1)
   (setq pyim-page-length 5)
+  :hook
+  ((pyim-isearch-mode))
   :bind
   (("C-\\" . toggle-input-method)
    ("C-;" . pyim-delete-word-from-personal-buffer)))
