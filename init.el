@@ -15,6 +15,7 @@
 (setq make-backup-files nil)
 
 (column-number-mode)
+(show-paren-mode 1)
 (global-display-line-numbers-mode t)
 (set-face-attribute 'default nil :height 120)
 (setq visible-bell t)
