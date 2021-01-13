@@ -311,7 +311,8 @@
   :config
   (dashboard-setup-startup-hook)
   (setq dashboard-banner-logo-title "you need to control yourself")
-  (setq dashboard-startup-banner 'logo)
+  (setq dashboard-startup-banner "~/github/emacs.d/pictures/ue-pink.png")
+  (setq dashboard-image-banner-max-width 400)
   (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
   (setq dashboard-set-navigator t)
