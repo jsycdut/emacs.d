@@ -47,10 +47,17 @@
   (package-install 'use-package))
 (require 'use-package)
 (setq use-package-always-ensure t)
+(eval-and-compile
+    (setq use-package-always-ensure t)
+    (setq use-package-always-defer t)
+    (setq use-package-always-demand nil)
+    (setq use-package-expand-minimally t)
+    (setq use-package-verbose t))
 
 ;;;;;;;;;;;;;;;;;; Packages
 (use-package magit)
 (use-package doom-themes
+  :defer nil
   :config
   (load-theme 'doom-gruvbox t)
   (setq doom-themes-enable-bold t
@@ -59,7 +66,6 @@
   (doom-themes-org-config))
 
 (use-package doom-modeline
-  :ensure t
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
 
@@ -67,11 +73,16 @@
   :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package nyan-mode
-  :init (nyan-mode 1))
+  :init
+  (nyan-mode 1))
+;;   :config
+;;   (setq nyan-animate-nyancat t)
+;;   (setq nyan-wavy-trail t)
+;;   (setq nyan-animate-nyancat t))
 
 (use-package command-log-mode
-  :ensure t
   :init (command-log-mode 1))
+
 (use-package all-the-icons)
 
 ;; for key sequency completion
@@ -124,7 +135,6 @@
 ;;
 
 (use-package projectile
-  :ensure t
   :init
   (projectile-mode +1)
   :bind (:map projectile-mode-map
@@ -157,7 +167,7 @@
         (tags-todo "code")
         (tags-todo "theory")
         ))))
-  (defvar org-agenda-dir "" "gtd org files location")
+;;  (defvar org-agenda-dir "" "gtd org files location")
   (setq-default org-agenda-dir "~/github/org/")
   (setq org-agenda-file-note (expand-file-name "notes.org" org-agenda-dir))
   (setq org-agenda-file-task (expand-file-name "task.org" org-agenda-dir))
@@ -279,7 +289,6 @@
 
 ;;;;;;;;;;;;;;;;;; chinese input method
 (use-package pyim
-  :ensure nil
   :demand t
   :config
   (use-package pyim-basedict
@@ -296,7 +305,7 @@
    ("C-;" . pyim-delete-word-from-personal-buffer)))
 
 (use-package dashboard
-  :ensure t
+  :defer nil
   :config
   (dashboard-setup-startup-hook)
   (setq dashboard-banner-logo-title "you need to control yourself")
@@ -326,5 +335,3 @@
   (setq org-pomodoro-long-break-sound-args "-volume 45")
   (setq org-pomodoro-short-break-sound-args "-volume 45")
   (setq org-pomodoro-ticking-sound-args "-volume 45"))
-
-
