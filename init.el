@@ -164,12 +164,14 @@
       ("wc" "不重要且紧急的任务" tags-todo "+PRIORITY=\"C\"")
       ("W" "Weekly Review"
        ((stuck "") ;; review stuck projects as designated by org-stuck-projects
-        (tags-todo "project")
+        (tags-todo "work")
         (tags-todo "daily")
         (tags-todo "weekly")
-        (tags-todo "school")
+        (tags-todo "github")
         (tags-todo "code")
         (tags-todo "theory")
+	(tags-todo "algorithm")
+	(tags-todo "emacs")
         ))))
 ;;  (defvar org-agenda-dir "" "gtd org files location")
   (setq-default org-agenda-dir "~/github/org/")
