@@ -74,11 +74,11 @@
 
 (use-package nyan-mode
   :init
-  (nyan-mode 1))
-;;   :config
-;;   (setq nyan-animate-nyancat t)
-;;   (setq nyan-wavy-trail t)
-;;   (setq nyan-animate-nyancat t))
+  (nyan-mode 1)
+   :config
+   (setq nyan-animate-nyancat t)
+   (setq nyan-wavy-trail t)
+   (setq nyan-animate-nyancat t))
 
 (use-package command-log-mode
   :init (command-log-mode 1))
