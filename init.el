@@ -13,6 +13,8 @@
 (tool-bar-mode -1)
 (setq inhibit-startup-message t)
 (setq make-backup-files nil)
+(electric-pair-mode)
+(setq electric-pair-preserve-balance nil)
 
 (column-number-mode)
 (show-paren-mode 1)
