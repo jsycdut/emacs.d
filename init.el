@@ -250,6 +250,28 @@
     (setq-default indent-tabs-mode nil)
   :commands lsp)
 
+(use-package dap-mode
+  :after lsp-mode
+  :config
+  (dap-mode t)
+  (dap-ui-mode t)
+  (dap-tooltip-mode t)
+  (dap-auto-configure-mode)
+  (tooltip-mode 1)
+  )
+
+(use-package dap-java
+  :ensure nil
+  :config
+  (dap-register-debug-template "My Runner"
+                             (list :type "java"
+                                   :request "launch"
+                                   :args ""
+                                   :vmArgs "-ea -Dmyapp.instance.name=myapp_1"
+                                   :projectName "myapp"
+                                   :mainClass "com.domain.AppRunner"
+                                   :env '(("DEV" . "1")))))
+
 (setq lsp-keymap-prefix "s-l")
 
 ;; optional lsp integration with other fantastic basic enhencement
