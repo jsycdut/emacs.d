@@ -262,4 +262,9 @@ url/
 workspace/
 projectile-bookmarks.eld
 .lsp-session-v1
+.dap-breakpoints
+bookmarks
+eclipse.jdt.ls/
+games/
+temp
 # end of my own config
