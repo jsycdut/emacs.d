@@ -307,13 +307,12 @@
 ;; Java
 (use-package lsp-java
 	:config
-	(setq lsp-java-server-install-dir "~/.emacs.d/lsp-servers/jdt/")
-	(setq lsp-java-jdt-download-url  "https://download.eclipse.org/jdtls/milestones/0.57.0/jdt-language-server-0.57.0-202006172108.tar.gz")
-	(setq lsp-java-format-settings-url "/home/corona/github/emacs.d/lsp-servers/format-settings/eclipse-java-google-style.xml")
-	(setq lsp-java-format-settings-profile "GoogleStyle")
+;;	(setq lsp-java-server-install-dir "~/.emacs.d/lsp-servers/jdt/")
+;;	(setq lsp-java-jdt-download-url  "https://download.eclipse.org/jdtls/milestones/0.57.0/jdt-language-server-0.57.0-202006172108.tar.gz")
+;;	(setq lsp-java-format-settings-url "/home/corona/github/emacs.d/lsp-servers/format-settings/eclipse-java-google-style.xml")
+;;	(setq lsp-java-format-settings-profile "GoogleStyle")
 	(add-hook 'java-mode-hook 'lsp))
 
-(use-package dap-java :ensure nil)
 ;; Python
 (use-package lsp-python-ms
   :ensure t
