@@ -220,10 +220,15 @@
   :config
     (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
     (setq aw-dispatch-always t)
-    :bind("C-x o" . ace-window))
+    (setq aw-ignore-on t)
+;;    (setq aw-ignore-current t)
+    (set-face-attribute 'aw-leading-char-face nil :height 250)
+    :bind("M-o" . ace-window))
 
 (use-package helm
   :config (helm-mode))
+
+(use-package ag)
 
 (use-package company
   :bind (:map company-active-map
