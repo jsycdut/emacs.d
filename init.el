@@ -32,6 +32,7 @@
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("org" . "https://orgmode.org/elpa/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("elpa" . "https://elpa.gnu.org/packages/")))
 
 ;; mirror for Chinese user
