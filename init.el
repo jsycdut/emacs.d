@@ -168,6 +168,7 @@
       ("W" "Weekly Review"
        ((stuck "") ;; review stuck projects as designated by org-stuck-projects
         (tags-todo "work")
+	(tags-todo "play")
         (tags-todo "daily")
         (tags-todo "weekly")
         (tags-todo "github")
