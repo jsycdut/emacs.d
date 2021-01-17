@@ -14,6 +14,7 @@
 (setq inhibit-startup-message t)
 (setq make-backup-files nil)
 (electric-pair-mode)
+(auto-revert-mode)
 (setq electric-pair-preserve-balance nil)
 
 (column-number-mode)
@@ -63,7 +64,7 @@
 (use-package doom-themes
   :defer nil
   :config
-  (load-theme 'doom-gruvbox t)
+  (load-theme 'doom-dracula t)
   (setq doom-themes-enable-bold t
 	doom-theme-enable-italic t)
   (doom-themes-visual-bell-config)
