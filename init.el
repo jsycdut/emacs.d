@@ -91,6 +91,14 @@
 
 (use-package all-the-icons)
 
+;; for color like "\e[31m Hello World \e[0m"
+(use-package ansi-color
+  :config
+  (defun my-colorize-compilation-buffer ()
+    (when (eq major-mode 'compilation-mode)
+      (ansi-color-apply-on-region compilation-filter-start (point-max))))
+  :hook (compilation-filter . my-colorize-compilation-buffer))
+
 ;; for key sequency completion
 (use-package which-key
   :init (which-key-mode)
