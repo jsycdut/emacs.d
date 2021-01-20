@@ -248,6 +248,7 @@
         (c-mod . lsp)
         (cc-mode . lsp)
         (sh-mode . lsp)
+	(scala-mode . lsp)
         (lsp-mode . lsp-enable-which-key-integration))
   :config
     (setq lsp-headerline-breadcrumb-segments '(symbols))
@@ -337,8 +338,10 @@
    (setq sbt:program-options '("-Dsbt.supershell=false"))
    )
 ;; Add metals backend for lsp-mode
+;; do not forget to compile metals-emacs
+;; see https://scalameta.org/metals/docs/editors/emacs.html
 (use-package lsp-metals
-  :config (setq lsp-metals-treeview-show-when-views-received t))
+  :ensure t)
 
 ;; Python
 (use-package lsp-python-ms
@@ -400,16 +403,3 @@
   (setq org-pomodoro-long-break-sound-args "-volume 45")
   (setq org-pomodoro-short-break-sound-args "-volume 45")
   (setq org-pomodoro-ticking-sound-args "-volume 45"))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("d6603a129c32b716b3d3541fc0b6bfe83d0e07f1954ee64517aa62c9405a3441" default)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
