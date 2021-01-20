@@ -234,11 +234,7 @@
     (set-face-attribute 'aw-leading-char-face nil :height 250)
     :bind("M-o" . ace-window))
 
-(use-package helm
-  :config (helm-mode))
-
 (use-package ag)
-
 (use-package company
   :bind (:map company-active-map
               ("M-n" . nil)
@@ -304,7 +300,6 @@
   :commands lsp-treemacs-errors-list
   :config
   (lsp-treemacs-sync-mode 1))
-(use-package helm-lsp :commands helm-lsp-workspace-symbol)
 
 (use-package flycheck
   :bind
@@ -354,7 +349,7 @@
   :defer nil
   :config
   (dashboard-setup-startup-hook)
-  (setq dashboard-banner-logo-title "Control your time, control your life")
+  (setq dashboard-banner-logo-title "时间不等人, 行动起来")
   (setq dashboard-startup-banner "~/github/emacs.d/pictures/ue-pink.png")
   (setq dashboard-image-banner-max-width 400)
   (setq dashboard-set-heading-icons t)
@@ -382,3 +377,16 @@
   (setq org-pomodoro-long-break-sound-args "-volume 45")
   (setq org-pomodoro-short-break-sound-args "-volume 45")
   (setq org-pomodoro-ticking-sound-args "-volume 45"))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("d6603a129c32b716b3d3541fc0b6bfe83d0e07f1954ee64517aa62c9405a3441" default)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
