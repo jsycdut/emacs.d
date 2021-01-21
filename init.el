@@ -232,7 +232,11 @@
     (setq aw-ignore-on t)
 ;;    (setq aw-ignore-current t)
     (set-face-attribute 'aw-leading-char-face nil :height 250)
-    :bind("M-o" . ace-window))
+    :bind
+    ("M-o" . ace-window)
+    ("M-s 1" . treemacs-select-window)
+    ("M-s !" . treemacs-quit)
+    )
 
 (use-package ag)
 (use-package company
