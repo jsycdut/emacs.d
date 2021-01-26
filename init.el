@@ -253,6 +253,7 @@
         (cc-mode . lsp)
         (sh-mode . lsp)
 	(scala-mode . lsp)
+	(go-mode . lsp)
         (lsp-mode . lsp-enable-which-key-integration))
   :config
     (setq lsp-headerline-breadcrumb-segments '(symbols))
@@ -354,6 +355,11 @@
   :hook (python-mode . (lambda ()
                           (require 'lsp-python-ms)
                           (lsp))))  ; or lsp-deferred
+
+;; go lang
+(use-package go-mode)
+
+
 ;;;;;;;;;;;;;;;;;; key bindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
