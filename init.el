@@ -80,7 +80,7 @@
 ;; nyan cat, need mplayer installed
 (use-package nyan-mode
   :init
-  (nyan-mode 1)
+  (nyan-mode 0)
    :config
    (setq nyan-animate-nyancat t)
    (setq nyan-wavy-trail t)
