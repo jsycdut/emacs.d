@@ -95,8 +95,11 @@
 (use-package ansi-color
   :config
   (defun my-colorize-compilation-buffer ()
-    (when (eq major-mode 'compilation-mode)
-      (ansi-color-apply-on-region compilation-filter-start (point-max))))
+    ;;(when (eq major-mode 'compilation-mode)
+    ;;  (ansi-color-apply-on-region compilation-filter-start (point-max))))
+    (toggle-read-only)
+    (ansi-color-apply-on-region compilation-filter-start (point))
+    (toggle-read-only))
   :hook (compilation-filter . my-colorize-compilation-buffer))
 
 ;; for key sequency completion
