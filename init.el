@@ -13,6 +13,7 @@
 (tool-bar-mode -1)
 (setq inhibit-startup-message t)
 (setq make-backup-files nil)
+(setq x-select-enable-clipboard t)
 (electric-pair-mode)
 (auto-revert-mode)
 (setq electric-pair-preserve-balance nil)
