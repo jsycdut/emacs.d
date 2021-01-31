@@ -367,23 +367,26 @@
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 ;;;;;;;;;;;;;;;;;; chinese input method
-(use-package pyim
-  :demand t
-  :config
-  (use-package posframe)
-  (use-package pyim-basedict
-    :ensure nil
-    :config (pyim-basedict-enable))
-  (setq pyim-page-tooltip 'posframe)
-  (setq default-input-method "pyim")
-  (setq pyim-default-scheme 'quanpin)
-  (setq pyim-page-length 5)
-  :hook
-  ((pyim-isearch-mode))
-  :bind
-  (("C-\\" . toggle-input-method)
-   ("C-;" . pyim-delete-word-from-personal-buffer)))
-
+;; seems I don't need it anymore, I use rime in my arch linux
+;; and system input method toggle works well, so have a rest
+;; 
+;; (use-package pyim
+;;   :demand t
+;;   :config
+;;   (use-package posframe)
+;;   (use-package pyim-basedict
+;;     :ensure nil
+;;     :config (pyim-basedict-enable))
+;;   (setq pyim-page-tooltip 'posframe)
+;;   (setq default-input-method "pyim")
+;;   (setq pyim-default-scheme 'quanpin)
+;;   (setq pyim-page-length 5)
+;;   :hook
+;;   ((pyim-isearch-mode))
+;;   :bind
+;;   (("C-\\" . toggle-input-method)
+;;    ("C-;" . pyim-delete-word-from-personal-buffer)))
+;; 
 (use-package dashboard
   :defer nil
   :config
