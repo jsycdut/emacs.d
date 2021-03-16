@@ -242,7 +242,6 @@
     ("M-s !" . treemacs-quit)
     )
 
-(use-package ag)
 (use-package company
   :bind (:map company-active-map
               ("M-n" . nil)
