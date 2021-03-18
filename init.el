@@ -21,11 +21,12 @@
 (column-number-mode)
 (show-paren-mode 1)
 (global-display-line-numbers-mode t)
+(global-visual-line-mode t)
 (set-face-attribute 'default nil :height 120)
 (setq visible-bell t)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-(set-frame-parameter (selected-frame) 'alpha '(80 . 50))
-(add-to-list 'default-frame-alist '(alpha . (80 . 50)))
+;;(set-frame-parameter (selected-frame) 'alpha '(80 . 50))
+;;(add-to-list 'default-frame-alist '(alpha . (80 . 50)))
 ;;;;;;;;;;;;;;;;;; misc
 (setq browse-url-browser-function 'browse-url-chromium)
 
