@@ -43,9 +43,9 @@
   (setq TeX-save-querynil )
   (setq TeX-show-compilation t)
 ))
-(add-hook 'org-pomodoro-finished-hook
-	(lambda ()
-		(call-process-shell-command "terminal-notifier -message 快休息下继续工作 -title ' 🍅 工作法'" )))
+;;(add-hook 'org-pomodoro-finished-hook
+;;	(lambda ()
+;;		(call-process-shell-command "terminal-notifier -message 快休息下继续工作 -title ' 🍅 工作法'" )))
 
 
 (column-number-mode)
@@ -235,8 +235,9 @@
   :init
   (setq evil-want-integration t)
   (setq evil-want-keybinding t)
+  (setq evil-want-C-i-jump nil)
   :config
-  (evil-mode 1)
+  (evil-mode)
   )
 
 (use-package evil-collection
@@ -486,7 +487,7 @@
   (setq org-pomodoro-ticking-sound-p nil)
   (setq org-pomodoro-audio-player "/opt/homebrew/bin/mpv")
   ;; 番茄钟长
-  (setq org-pomodoro-length 0.1)
+  (setq org-pomodoro-length 25)
   (setq org-pomodoro-short-break-length 5)
   (setq org-pomodoro-long-break-length 20)
   ;; 番茄钟音效
