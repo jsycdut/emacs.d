@@ -164,7 +164,9 @@
   :config (setq which-key-idle-delay 0.05))
 
 ;; enhencement for emacs original functions and command completion
-(use-package counsel)
+(use-package counsel
+  :bind (("C-;" . counsel-recentf)
+	 ("C-x f" . counsel-find-file)))
 (use-package ivy)
 (use-package swiper
   :diminish
@@ -215,18 +217,18 @@
 
 (use-package dashboard
   :ensure t
-  :after evil
+  ;:after evil
   :defer nil
   :config
   ;(setq dashboard-banner-logo-title "请不要相信胜利就像山坡上的蒲公英一样唾手可得!!!")
-  (setq dashboard-banner-logo-title "一切新的东西都是从艰苦斗争中锻炼出来的")
+  (setq dashboard-banner-logo-title "人是一个函数，它的输出80%取决于输入，而你，有没有参数检查？")
   (setq dashboard-set-file-icons t)
   (setq dashboard-display-icons-p t)
   (setq dashboard-icon-type 'nerd-icons)
   (setq dashboard-set-navigator t)
   (setq dashboard-center-content t)
   (setq dashboard-show-shortcuts t)
-  (setq dashboard-footer-messages '("现在就打开日程表接受你今天的挑战吧！！！"))
+  (setq dashboard-footer-messages '("输入垃圾就产生垃圾，输入有价值的，就能输出解决方案"))
   (dashboard-setup-startup-hook))
 
 (use-package evil
@@ -234,10 +236,17 @@
   :defer nil
   :init
   (setq evil-want-integration t)
-  (setq evil-want-keybinding t)
-  (setq evil-want-C-i-jump nil)
+  (setq evil-want-keybinding nil)
+  (setq evil-want-C-u-scroll t)
+  (setq evil-want-C-i-jump nil) ;; https://jeffkreeftmeijer.com/emacs-evil-org-tab/
   :config
   (evil-mode)
+  (evil-set-leader nil (kbd "SPC")) ;; 设置leader键，想替换掉复杂的键序列 https://www.reddit.com/r/emacs/comments/12zyrnk/evilsetleader_vs_generalel_for_spc_based/
+  ;;https://github.com/cofi/evil-leader evil设置leader
+  (evil-define-key 'normal 'global (kbd "<leader>f") 'counsel-find-file)
+  (evil-define-key 'normal 'global (kbd "<leader>r") 'counsel-recentf)
+  (evil-define-key 'normal 'global (kbd "<leader>a") 'org-agenda)
+  (evil-define-key 'normal 'global (kbd "<leader>x") 'counsel-M-x)
   )
 
 (use-package evil-collection
