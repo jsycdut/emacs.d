@@ -215,21 +215,6 @@
               ("s-p" . projectile-command-map)
               ("C-c p" . projectile-command-map)))
 
-(use-package dashboard
-  :ensure t
-  ;:after evil
-  :defer nil
-  :config
-  ;(setq dashboard-banner-logo-title "请不要相信胜利就像山坡上的蒲公英一样唾手可得!!!")
-  (setq dashboard-banner-logo-title "人是一个函数，它的输出80%取决于输入，而你，有没有参数检查？")
-  (setq dashboard-set-file-icons t)
-  (setq dashboard-display-icons-p t)
-  (setq dashboard-icon-type 'nerd-icons)
-  (setq dashboard-set-navigator t)
-  (setq dashboard-center-content t)
-  (setq dashboard-show-shortcuts t)
-  (setq dashboard-footer-messages '("输入垃圾就产生垃圾，输入有价值的，就能输出解决方案"))
-  (dashboard-setup-startup-hook))
 
 (use-package evil
   :ensure t
@@ -246,6 +231,9 @@
   (evil-define-key 'normal 'global (kbd "<leader>f") 'counsel-find-file)
   (evil-define-key 'normal 'global (kbd "<leader>r") 'counsel-recentf)
   (evil-define-key 'normal 'global (kbd "<leader>a") 'org-agenda)
+  (evil-define-key 'normal 'global (kbd "<leader>c") 'org-capture)
+  (evil-define-key 'normal 'global (kbd "<leader>o") 'org-pomodoro)
+  (evil-define-key 'normal 'global (kbd "<leader>b") 'ivy-switch-buffer)
   (evil-define-key 'normal 'global (kbd "<leader>x") 'counsel-M-x)
   )
 
@@ -254,6 +242,21 @@
   :ensure t
   :config
   (evil-collection-init))
+
+(use-package dashboard
+  :ensure t
+  ;:after evil
+  :defer nil
+  :config
+  (setq dashboard-banner-logo-title "人是一个函数，它的输出80%取决于输入，而你，有没有参数检查？")
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-display-icons-p t)
+  (setq dashboard-icon-type 'nerd-icons)
+  (setq dashboard-set-navigator t)
+  (setq dashboard-center-content t)
+  (setq dashboard-show-shortcuts t)
+  (setq dashboard-footer-messages '("输入垃圾就产生垃圾，输入有价值的，就能输出解决方案"))
+  (dashboard-setup-startup-hook))
 
 (use-package org
   :bind(("C-c a" . org-agenda)
@@ -273,20 +276,21 @@
        ((stuck "") ;; review stuck projects as designated by org-stuck-projects
         (tags-todo "工作事项")
         (tags-todo "学习事项")
-	      (tags-todo "个人爱好事项")
+	(tags-todo "个人爱好事项")
         (tags-todo "每日必做")
         (tags-todo "每周必做")
         (tags-todo "leetcode")
         (tags-todo "code")
         (tags-todo "theory")
-	      (tags-todo "algorithm")
-	      (tags-todo "emacs")
+	(tags-todo "algorithm")
+	(tags-todo "emacs")
         ))))
 ;;  (defvar org-agenda-dir "" "gtd org files location")
   (setq-default org-agenda-dir "~/github/org/")
   (setq org-agenda-file-note (expand-file-name "notes.org" org-agenda-dir))
   (setq org-agenda-file-task (expand-file-name "task.org" org-agenda-dir))
   (setq org-agenda-file-learn (expand-file-name "learn.org" org-agenda-dir))
+  (setq org-agenda-file-leetcode (expand-file-name "leetcode.org" org-agenda-dir))
   (setq org-agenda-file-play (expand-file-name "play.org" org-agenda-dir))
   (setq org-agenda-file-other (expand-file-name "other.org" org-agenda-dir))
   (setq org-agenda-file-idea (expand-file-name "idea.org" org-agenda-dir))
@@ -300,6 +304,9 @@
        :empty-lines 1)
       ("l" "学习，中优先级" entry (file+headline org-agenda-file-learn "学习事项")
        "* TODO [#350] %? :学习事项: \n  %i\n"
+      :empty-lines 1)
+      ("a" "算法攻略，中优先级" entry (file+headline org-agenda-file-leetcode "算法攻略")
+       "* TODO [#350] %? :算法突破: \n  %i\n"
       :empty-lines 1)
       ("p" "玩，低优先级" entry (file+headline org-agenda-file-play "个人爱好事项")
        "* TODO [#325] %? :个人爱好事项: \n  %i\n"
