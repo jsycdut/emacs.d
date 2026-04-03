@@ -268,3 +268,20 @@ eclipse.jdt.ls/
 games/
 temp
 # end of my own config
+
+elpa/
+eshell/
+gtd.org
+all-blog.org
+auto-save-list/
+tutorial/
+url/
+transient/
+tree-sitter/
+org-persist/
+network-security.data
+projectile-bookmarks.eld
+history
+custom.el
+bookmarks
+places
