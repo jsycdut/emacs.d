@@ -11,18 +11,17 @@
 (global-display-line-numbers-mode t)
 
 ;;设置一下字体大小
-(set-face-attribute 'default nil :height 160)
+(set-face-attribute 'default nil :height 180)
 
 ;;高亮当前行
 (global-hl-line-mode t)
 ;; 设置一下半透明
-;;(set-frame-parameter (selected-frame) 'alpha '(75 . 70))
-
+(set-frame-parameter (selected-frame) 'alpha '(100 . 80))
 
 ;;主题
 ;;(use-package 'monokai-theme :ensure t)
 ;; 亮色主题
-(load-theme 'doom-solarized-light 1)
+(load-theme 'doom-solarized-dark 1)
 ;; 暗色主题
 ;;(load-theme 'doom-solarized-dark 1)
 ;; 高亮展示括号匹配

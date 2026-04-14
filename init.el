@@ -13,18 +13,20 @@
 ;; 此处按照功能维度把配置分散到不同文件中，在这里统一加载
 ;; 将配置文件放入加载路径中
 (add-to-list 'load-path "~/.emacs.d/elisp")
+;; 加载插件包 
+(require 'init-packages)
 ;; 加载UI配置
 (require 'init-ui)
 ;; 加载emacs内置功能增强
 (require 'init-better-defaults)
-;; 加载插件包 
-(require 'init-packages)
 ;; 加载自动补全配置
 (require 'init-completions)
 ;; 加载按键映射
 (require 'init-keybindings)
 ;; 加载org配置
 (require 'init-org)
+;; 加载evil配置
+(require 'init-evil)
 
 
 

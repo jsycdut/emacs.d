@@ -19,7 +19,7 @@
   (package-install 'use-package))
 
 (use-package restart-emacs
-  :ensure t)
+  :ensure t)  
 
 (use-package savehist
   :ensure nil
@@ -93,10 +93,18 @@
 (use-package embark :ensure t)
 (global-set-key (kbd "C-;") 'embark-act)
 (setq prefix-help-command 'embark-prefix-help-command)
-(use-package embark-consult :ensure t)
 (use-package consult :ensure t)
+(use-package embark-consult :ensure t)
 (global-set-key (kbd "C-s") 'consult-line)
 (global-set-key (kbd "M-s i") 'consult-imenu)
+
+(use-package doom-themes
+  :ensure t)
+;; which-key插件用于在你按下某个快捷键的一部分的时候，弹窗提示你后面还有可选项
+(use-package which-key
+  :ensure t
+  :init (which-key-mode)
+  :config (setq which-key-idle-delay 0.1))
 
 
 ;; ripgrep的可执行命令保存在/opt/homebrew/bin中，需要加入到emacs的可执行程序路径
